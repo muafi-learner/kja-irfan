@@ -54,7 +54,7 @@
             font-size: 1.2rem;
         }
         .logo-container img {
-            height: 40px; /* Sesuaikan ukuran logo */
+            height: 40px; 
             margin-right: 15px;
         }
         .nav-links a {
@@ -74,7 +74,7 @@
             align-items: center;
             justify-content: center;
             gap: 40px;
-            background-color: #f8f9fa; /* Light silver/gray */
+            background-color: #f8f9fa;
             padding: 80px 20px;
             border-bottom: 1px solid #e9ecef;
         }
@@ -136,7 +136,7 @@
         .team-img-container {
             overflow: hidden;
             width: 100%;
-            aspect-ratio: 1 / 1; /* Memaksa rasio kotak 1:1 */
+            aspect-ratio: 1 / 1;
             background-color: #e9ecef;
         }
         .team-img-container img {
@@ -146,7 +146,7 @@
             transition: transform 0.4s ease;
         }
         .team-card:hover .team-img-container img {
-            transform: scale(1.1); /* Expand effect on hover */
+            transform: scale(1.1);
         }
         .team-info {
             padding: 20px 15px;
@@ -265,7 +265,7 @@
                 margin-top: 20px;
             }
             .team-grid {
-                grid-template-columns: 1fr; /* 1 kolom di HP */
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -275,9 +275,9 @@
     <!-- Header & Navigation -->
     <header>
         <div class="nav-container">
-            <!-- Jika tidak ada logo, text KJA Muhammad Irfan akan tetap muncul -->
             <a href="#" class="logo-container">
-                <img src="assets/img/logo-kja.png" alt="Logo" onerror="this.style.display='none'"> 
+                <!-- Jika logo belum ada, biarkan error handler menyembunyikannya otomatis -->
+                <img src="assets/logo-kja.png" alt="Logo" onerror="this.style.display='none'"> 
                 KJA Muhammad Irfan
             </a>
             <nav class="nav-links">
@@ -292,7 +292,8 @@
     <!-- Hero / Quote Section -->
     <section class="hero">
         <div class="hero-img">
-            <img src="assets/img/irfan-hero.jpg" alt="Muhammad Irfan">
+            <!-- Path diubah ke assets/Firefly.png sesuai repositori GitHub -->
+            <img src="assets/Firefly.png" alt="Muhammad Irfan">
         </div>
         <div class="hero-text">
             <p>“Saya mendirikan Kantor Jasa Akuntan dengan mission statement: helping businesses build a solid financial foundation so they can focus on what matters most”</p>
@@ -315,7 +316,8 @@
                 <!-- Person 1 -->
                 <div class="team-card">
                     <div class="team-img-container">
-                        <img src="assets/img/team-irfan.jpg" alt="Muhammad Irfan">
+                        <!-- Menggunakan Firefly.png sementara -->
+                        <img src="assets/Firefly.png" alt="Muhammad Irfan">
                     </div>
                     <div class="team-info">
                         <h4>Muhammad Irfan, CPA, CPMA</h4>
@@ -325,7 +327,8 @@
                 <!-- Person 2 -->
                 <div class="team-card">
                     <div class="team-img-container">
-                        <img src="assets/img/team-rekan2.jpg" alt="Mu'afi Zidni Ngilma">
+                        <!-- Menggunakan Firefly.png sementara -->
+                        <img src="assets/Firefly.png" alt="Mu'afi Zidni Ngilma">
                     </div>
                     <div class="team-info">
                         <h4>Mu'afi Zidni Ngilma</h4>
@@ -335,7 +338,8 @@
                 <!-- Person 3 -->
                 <div class="team-card">
                     <div class="team-img-container">
-                        <img src="assets/img/team-rekan3.jpg" alt="Rekan Ketiga">
+                        <!-- Menggunakan Firefly.png sementara -->
+                        <img src="assets/Firefly.png" alt="Rekan Ketiga">
                     </div>
                     <div class="team-info">
                         <h4>Dr. Nama Rekan Ketiga, S.E., M.Ak., BKP</h4>
