@@ -1,0 +1,491 @@
+/* ==========================================================
+   PENGATURAN UTAMA (CSS Variables)
+   Ubah nilai di sini untuk mengubah desain secara global
+   ========================================================== */
+:root {
+    /* 1. WARNA (Monokrom) */
+    --warna-teks-utama: #333333;
+    --warna-teks-pudar: #666666;
+    --warna-judul: #111111;
+    --warna-aksen: #111111;
+    --bg-putih: #ffffff;
+    --bg-abu-terang: #f0f2f5; 
+    --garis-batas: #e5e7eb;
+
+    /* 2. UKURAN FONT */
+    --font-size-paragraf: 1.05rem;
+    --font-size-judul-section: 2rem;
+    --font-size-nama-tim: 1.1rem;
+    --font-size-judul-jasa: 1.2rem;
+
+    /* 3. KETEBALAN FONT */
+    --fw-normal: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+
+    /* 4. PADDING & JARAK */
+    --padding-section-atas-bawah: 80px;
+    --padding-section-kiri-kanan: 20px;
+    --jarak-antar-kartu: 30px;
+
+    /* 5. HERO SECTION */
+    --hero-min-height: 65vh;           
+    --hero-image-wrapper-height: 100%; 
+    --hero-text-padding-left: 80px;    
+    --hero-text-width: 45%;            
+}
+
+/* === Base Styles === */
+html, body {
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+    color: var(--warna-teks-utama);
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-putih);
+    overflow-x: hidden; 
+}
+h1, h2, h3, h4 {
+    color: var(--warna-judul);
+    margin-top: 0;
+}
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--padding-section-atas-bawah) var(--padding-section-kiri-kanan);
+    box-sizing: border-box;
+}
+
+/* === Navbar / Header === */
+header {
+    background-color: var(--bg-putih);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 20px var(--padding-section-kiri-kanan);
+    box-sizing: border-box;
+}
+.logo {
+    font-weight: var(--fw-bold);
+    font-size: 1.5rem;
+    color: var(--warna-judul);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+.nav-links a {
+    text-decoration: none;
+    color: var(--warna-teks-utama);
+    margin-left: 35px;
+    font-weight: var(--fw-normal);
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+.nav-links a:hover {
+    color: var(--warna-teks-pudar);
+}
+
+/* === Hero Section === */
+.hero-section {
+    background-color: var(--bg-putih);
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 0; 
+    margin-top: -1px; 
+    display: flex; 
+    align-items: center;
+    min-height: var(--hero-min-height); 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hero-image-wrapper {
+    position: absolute; 
+    top: 0;
+    left: 0; 
+    width: 45vw; 
+    height: var(--hero-image-wrapper-height); 
+    background-color: var(--bg-abu-terang);
+    border-radius: 0 500px 500px 0; 
+    overflow: hidden; 
+    display: flex;
+    align-items: flex-end; 
+    justify-content: flex-end; 
+    z-index: 1;
+}
+.hero-image-wrapper img {
+    width: 90%; 
+    max-width: 450px; 
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: bottom center; 
+    margin-right: 5%; 
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2; 
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end; 
+    padding: 0 var(--padding-section-kiri-kanan);
+    pointer-events: none; 
+    box-sizing: border-box;
+}
+
+.hero-content {
+    width: var(--hero-text-width); 
+    padding-top: 40px; 
+    padding-bottom: 40px; 
+    padding-left: var(--hero-text-padding-left); 
+    pointer-events: auto; 
+    box-sizing: border-box;
+}
+
+.hero-text-intro {
+    font-size: 1.25rem;
+    font-weight: var(--fw-normal);
+    color: var(--warna-judul);
+    margin-bottom: 10px;
+}
+.hero-text-main {
+    font-size: 2.2rem;
+    font-weight: var(--fw-semibold);
+    line-height: 1.3;
+    color: var(--warna-judul);
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+.hero-text-author {
+    font-size: 1rem;
+    color: var(--warna-teks-pudar);
+    margin-bottom: 40px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--warna-aksen);
+    color: var(--bg-putih);
+    padding: 12px 30px;
+    border-radius: 30px; 
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: var(--fw-medium);
+    transition: opacity 0.2s;
+}
+.btn-primary:hover {
+    opacity: 0.8;
+    color: var(--bg-putih);
+}
+
+/* === About Section === */
+.about-section {
+    background-color: var(--bg-putih);
+    text-align: center;
+    margin-top: 40px;
+}
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.section-title {
+    font-size: var(--font-size-judul-section);
+    font-weight: var(--fw-bold);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.about-content p {
+    font-size: var(--font-size-paragraf);
+    margin-bottom: 15px;
+}
+
+/* === Team Section === */
+.team-section {
+    background-color: var(--bg-abu-terang);
+    padding-bottom: 80px; 
+}
+.team-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--jarak-antar-kartu);
+}
+.team-card {
+    background-color: var(--bg-putih);
+    border: 1px solid var(--garis-batas);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+.team-photo {
+    width: 100%;
+    aspect-ratio: 5 / 7; 
+    background-color: #e8eaed; 
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end; 
+    justify-content: center;
+}
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: top center; 
+    filter: grayscale(100%); 
+    transition: transform 0.4s ease, filter 0.4s ease; 
+}
+.team-card:hover .team-photo img {
+    filter: grayscale(0%); 
+    transform: scale(1.05);
+}
+.team-info {
+    padding: 25px 20px;
+    background-color: var(--bg-putih);
+}
+.team-info h4 {
+    font-size: var(--font-size-nama-tim);
+    margin-bottom: 5px;
+    font-weight: var(--fw-semibold);
+}
+.team-info p {
+    font-size: 0.95rem;
+    color: var(--warna-teks-pudar);
+    margin: 0;
+}
+
+/* === Services Section (Desain Solid & Professional) === */
+.services-section {
+    background-color: var(--bg-putih);
+    padding-bottom: var(--padding-section-atas-bawah);
+}
+.services-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px; 
+    align-items: stretch; 
+}
+.service-card {
+    background-color: var(--bg-putih);
+    border: 1px solid var(--garis-batas);
+    border-radius: 8px; 
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    position: relative;
+}
+.service-card:hover {
+    border-color: var(--warna-judul);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.04); 
+}
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: var(--warna-judul);
+    border-radius: 8px 0 0 0;
+    transition: width 0.4s ease;
+}
+.service-card:hover::before {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+}
+.service-card h4 {
+    font-size: 1.4rem; 
+    margin-bottom: 25px;
+    line-height: 1.3;
+    font-weight: var(--fw-bold);
+    color: var(--warna-judul);
+    letter-spacing: -0.5px;
+}
+.service-card p {
+    color: var(--warna-teks-pudar);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.service-card p:last-of-type {
+    margin-bottom: 0;
+}
+.service-card p strong {
+    color: var(--warna-teks-utama);
+    font-weight: var(--fw-semibold);
+}
+
+/* === Contact Section === */
+.contact-section {
+    background-color: var(--bg-abu-terang);
+    border-top: 1px solid var(--garis-batas);
+}
+.contact-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.contact-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    font-weight: var(--fw-semibold);
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--garis-batas);
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: var(--bg-putih);
+    transition: border-color 0.2s;
+}
+.form-group input:focus {
+    outline: none;
+    border-color: var(--warna-aksen);
+}
+.submit-btn {
+    width: 100%;
+    background-color: var(--warna-aksen);
+    color: var(--bg-putih);
+    border: none;
+    padding: 16px;
+    font-size: 1.1rem;
+    font-weight: var(--fw-semibold);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+.submit-btn:hover {
+    opacity: 0.85;
+}
+
+/* === Footer === */
+footer {
+    background-color: var(--warna-judul);
+    color: var(--bg-putih);
+    padding: 60px 20px 40px;
+}
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: var(--fw-bold);
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+.footer-text {
+    color: #aaaaaa;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #333333;
+    color: #777777;
+    font-size: 0.85rem;
+}
+
+/* ==========================================================
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   ========================================================== */
+@media (max-width: 900px) {
+    :root {
+        --padding-section-atas-bawah: 50px; 
+    }
+    .hero-section {
+        flex-direction: column;
+        min-height: auto;
+        padding-top: 0; 
+        width: 100%; 
+        box-sizing: border-box;
+    }
+    .hero-image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 380px; 
+        border-radius: 0 0 50% 50%; 
+        justify-content: center; 
+        padding-top: 20px;
+        box-sizing: border-box; 
+    }
+    .hero-image-wrapper img {
+        width: 80%; 
+        max-width: 320px; 
+        margin-right: 0; 
+    }
+    .hero-container {
+        justify-content: center;
+        margin-top: 40px;
+        padding-bottom: 40px;
+        width: 100%; 
+        box-sizing: border-box;
+        padding: 0 var(--padding-section-kiri-kanan); 
+    }
+    .hero-content {
+        width: 100%; 
+        max-width: 100%; 
+        padding: 0; 
+        text-align: center; 
+        box-sizing: border-box;
+    }
+    .hero-text-main {
+        font-size: 1.8rem;
+    }
+    .hero-text-intro {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; 
+    }
+    .team-grid {
+        grid-template-columns: 1fr;
+        max-width: 320px; 
+        margin: 0 auto; 
+    }
+    .section-title {
+        font-size: 1.6rem; 
+    }
+}
