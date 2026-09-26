@@ -122,12 +122,15 @@ header {
     z-index: 1;
 }
 .hero-image-wrapper img {
-    width: 90%; 
-    max-width: 450px; 
-    height: auto;
+    width: 100%; 
+    max-width: 400px; /* Diperkecil agar tidak terlalu zoom */
+    height: 90%; /* Menggunakan persentase tinggi agar tidak mentok ke atas */
     display: block;
-    object-fit: cover;
-    object-position: bottom center; 
+    
+    /* GANTI INI: menggunakan contain agar gambar utuh tidak terpotong/zoom */
+    object-fit: contain; 
+    
+    object-position: bottom center; /* Memastikan foto tetap menempel ke bawah */
     margin-right: 5%; 
 }
 
