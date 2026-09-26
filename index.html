@@ -4,319 +4,492 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KJA Muhammad Irfan</title>
+    <!-- Import Google Font: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
+    
     <style>
-        /* Base Styles & Smooth Scroll */
+        /* ==========================================================
+           PENGATURAN UTAMA (CSS Variables)
+           ========================================================== */
+        :root {
+            /* 1. PENGATURAN WARNA (Monokrom) */
+            --warna-teks-utama: #333333;
+            --warna-teks-pudar: #666666;
+            --warna-judul: #111111;
+            --warna-aksen: #111111;
+            --bg-putih: #ffffff;
+            --bg-abu-terang: #f0f2f5; /* Warna abu-abu lengkungan background */
+            --garis-batas: #e5e7eb;
+
+            /* 2. PENGATURAN UKURAN FONT */
+            --font-size-paragraf: 1.05rem;
+            --font-size-judul-section: 2rem;
+            --font-size-nama-tim: 1.1rem;
+            --font-size-judul-jasa: 1.2rem;
+
+            /* 3. PENGATURAN KETEBALAN FONT */
+            --fw-normal: 400;
+            --fw-medium: 500;
+            --fw-semibold: 600;
+            --fw-bold: 700;
+
+            /* 4. PENGATURAN PADDING & JARAK */
+            --padding-section-atas-bawah: 80px;
+            --padding-section-kiri-kanan: 20px;
+            --jarak-antar-kartu: 30px;
+        }
+
+        /* === Base Styles === */
         html {
             scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
+            color: var(--warna-teks-utama);
+            line-height: 1.7;
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
             margin: 0;
             padding: 0;
-            background-color: #ffffff;
+            background-color: var(--bg-putih);
         }
-        
-        h1, h2, h3 {
-            color: #111;
-            text-align: center;
+        h1, h2, h3, h4 {
+            color: var(--warna-judul);
+            margin-top: 0;
         }
-
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: var(--padding-section-atas-bawah) var(--padding-section-kiri-kanan);
         }
 
-        /* Header & Navigation */
+        /* === Navbar / Header (Desain Baru sesuai Desain) === */
         header {
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background-color: var(--bg-putih);
             position: sticky;
             top: 0;
             z-index: 1000;
+            /* Border bawah dihapus agar lebih clean menyatu dengan body */
         }
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1000px;
+            max-width: 1200px; /* Dibuat sedikit lebih lebar */
             margin: 0 auto;
-            padding: 15px 20px;
+            padding: 20px var(--padding-section-kiri-kanan);
         }
-        .logo-container {
-            display: flex;
-            align-items: center;
+        .logo {
+            font-weight: var(--fw-bold);
+            font-size: 1.5rem;
+            color: var(--warna-judul);
             text-decoration: none;
-            color: #111;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        .logo-container img {
-            height: 40px; 
-            margin-right: 15px;
+            letter-spacing: 1px;
         }
         .nav-links a {
             text-decoration: none;
-            color: #555;
-            margin-left: 25px;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            color: var(--warna-teks-utama);
+            margin-left: 35px;
+            font-weight: var(--fw-normal);
+            font-size: 1rem;
+            transition: color 0.2s;
         }
         .nav-links a:hover {
-            color: #111;
+            color: var(--warna-teks-pudar);
         }
 
-        /* Hero / Quote Section */
-        .hero {
+        /* === Hero Section (Desain Baru Lengkungan Abu-abu) === */
+        /* === Hero Section (Desain Baru Lengkungan Abu-abu Penuh) === */
+        .hero-section {
+            background-color: var(--bg-putih);
+            position: relative;
+            /* overflow: hidden; DIHAPUS agar bentuk melingkarnya tidak terpotong kotak */
+            padding-top: 40px;
+            padding-bottom: 0; 
+            margin-top: -1px; /* Mencegah garis halus antara header dan section */
+        }
+        
+        /* Membuat lengkungan background abu-abu membulat penuh di kiri */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50vw; /* Mengambil 50% lebar layar (setengah kiri) */
+            height: 100%;
+            background-color: var(--bg-abu-terang);
+            /* Membuat bulat penuh di sisi kanan (atas dan bawah), kiri siku-siku menempel layar */
+            border-radius: 0 500px 500px 0; 
+            z-index: 1;
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 2; 
+            max-width: 1100px;
+            margin: 0 auto;
             display: flex;
             align-items: center;
+            gap: 40px; 
+            padding: 0 var(--padding-section-kiri-kanan);
+        }
+        
+        /* Layout Foto Kiri */
+        .hero-image {
+            flex: 0 0 45%; 
+            display: flex;
+            align-items: flex-end; 
             justify-content: center;
-            gap: 40px;
-            background-color: #f8f9fa;
-            padding: 80px 20px;
-            border-bottom: 1px solid #e9ecef;
         }
-        .hero-img {
-            flex: 0 0 280px;
-        }
-        .hero-img img {
+        .hero-image img {
             width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .hero-text {
-            flex: 1;
-            font-style: italic;
-            font-size: 1.3rem;
-            color: #444;
-            max-width: 600px;
-        }
-        .hero-text p {
-            margin-bottom: 15px;
-            line-height: 1.8;
-        }
-        .hero-text span {
+            max-width: 450px; 
+            height: auto;
             display: block;
-            text-align: right;
-            font-weight: bold;
-            font-style: normal;
-            font-size: 1.1rem;
         }
 
-        /* About Section */
-        .about {
+        /* Layout Teks Kanan */
+        .hero-content {
+            flex: 1; 
+            padding-bottom: 40px;
+            /* Tambahan padding agar teks tidak terlalu menempel ke lengkungan jika layar mengecil */
+            padding-left: 20px; 
+        }
+        .hero-text-intro {
+            font-size: 1.25rem;
+            font-weight: var(--fw-normal);
+            color: var(--warna-judul);
+            margin-bottom: 10px;
+        }
+        .hero-text-main {
+            font-size: 2.2rem;
+            font-weight: var(--fw-semibold);
+            line-height: 1.3;
+            color: var(--warna-judul);
+            margin-bottom: 15px;
+        }
+        .hero-text-author {
+            font-size: 1rem;
+            color: var(--warna-teks-pudar);
+            margin-bottom: 40px;
+        }
+        
+        /* Tombol Hubungi Kami */
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--warna-aksen);
+            color: var(--bg-putih);
+            padding: 12px 30px;
+            border-radius: 30px; 
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: var(--fw-medium);
+            transition: opacity 0.2s;
+        }
+        .btn-primary:hover {
+            opacity: 0.8;
+            color: var(--bg-putih);
+        }
+
+        /* === About Section === */
+        .about-section {
+            background-color: var(--bg-putih);
             text-align: center;
-            max-width: 800px;
+            margin-top: 40px;
         }
-        .about p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: var(--font-size-judul-section);
+            font-weight: var(--fw-bold);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .about-content p {
+            font-size: var(--font-size-paragraf);
+            margin-bottom: 15px;
         }
 
-        /* Team Section */
-        .team {
-            background-color: #f8f9fa;
+        /* === Team Section === */
+        .team-section {
+            background-color: var(--bg-abu-terang);
+        }
+        .team-header {
+            text-align: center;
+            margin-bottom: 50px;
         }
         .team-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
+            gap: var(--jarak-antar-kartu);
         }
         .team-card {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            background-color: var(--bg-putih);
+            border: 1px solid var(--garis-batas);
+            border-radius: 12px;
             overflow: hidden;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
         }
-        .team-img-container {
-            overflow: hidden;
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+        .team-photo {
             width: 100%;
             aspect-ratio: 1 / 1;
-            background-color: #e9ecef;
+            background-color: var(--garis-batas);
+            overflow: hidden;
         }
-        .team-img-container img {
+        .team-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            filter: grayscale(100%);
+            transition: filter 0.3s, transform 0.3s;
         }
-        .team-card:hover .team-img-container img {
-            transform: scale(1.1);
+        .team-card:hover .team-photo img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
         }
         .team-info {
-            padding: 20px 15px;
+            padding: 25px 20px;
         }
         .team-info h4 {
-            margin: 0 0 5px 0;
-            font-size: 1.1rem;
-            word-wrap: break-word; 
+            font-size: var(--font-size-nama-tim);
+            margin-bottom: 5px;
+            font-weight: var(--fw-semibold);
         }
         .team-info p {
-            margin: 0;
-            color: #666;
             font-size: 0.95rem;
+            color: var(--warna-teks-pudar);
+            margin: 0;
         }
 
-        /* Services Section */
-        .services .service-item {
-            margin-bottom: 40px;
+        /* === Services Section === */
+        .services-section {
+            background-color: var(--bg-putih);
         }
-        .services h4 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: #222;
-            text-align: left;
+        .services-header {
+            text-align: center;
+            margin-bottom: 50px;
         }
-
-        /* Contact Section */
-        .contact {
-            background-color: #f8f9fa;
-            border-top: 1px solid #e9ecef;
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--jarak-antar-kartu);
         }
-        .contact-form {
-            max-width: 500px;
-            margin: 0 auto;
-            background: #fff;
+        .service-card {
+            border: 1px solid var(--garis-batas);
+            border-radius: 12px;
             padding: 40px 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: border-color 0.3s;
+            background-color: var(--bg-putih);
+        }
+        .service-card:hover {
+            border-color: var(--warna-aksen);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+        .service-card h4 {
+            font-size: var(--font-size-judul-jasa);
+            margin-bottom: 20px;
+            line-height: 1.4;
+            font-weight: var(--fw-semibold);
+        }
+        .service-card p {
+            color: var(--warna-teks-utama);
+            font-size: var(--font-size-paragraf);
+            margin-bottom: 15px;
+        }
+        .service-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* === Contact Section === */
+        .contact-section {
+            background-color: var(--bg-abu-terang);
+            border-top: 1px solid var(--garis-batas);
+        }
+        .contact-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-header {
+            text-align: center;
+            margin-bottom: 40px;
         }
         .form-group {
             margin-bottom: 20px;
         }
         .form-group label {
             display: block;
+            font-weight: var(--fw-semibold);
             margin-bottom: 8px;
-            font-weight: 600;
-            color: #444;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-family: inherit;
-        }
-        .submit-btn {
-            background-color: #222;
-            color: #fff;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        .submit-btn:hover {
-            background-color: #444;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #111;
-            color: #f8f9fa;
-            text-align: center;
-            padding: 40px 20px;
-        }
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .footer-content p {
-            margin: 0;
-            color: #bbb;
             font-size: 0.95rem;
         }
-        .footer-content .footer-bold {
-            color: #fff;
-            font-weight: bold;
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--garis-batas);
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 1rem;
+            background-color: var(--bg-putih);
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--warna-aksen);
+        }
+        .submit-btn {
+            width: 100%;
+            background-color: var(--warna-aksen);
+            color: var(--bg-putih);
+            border: none;
+            padding: 16px;
             font-size: 1.1rem;
-            margin-bottom: 10px;
+            font-weight: var(--fw-semibold);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            margin-top: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .submit-btn:hover {
+            opacity: 0.85;
         }
 
-        /* Responsive Design */
+        /* === Footer === */
+        footer {
+            background-color: var(--warna-judul);
+            color: var(--bg-putih);
+            padding: 60px 20px 40px;
+        }
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: var(--fw-bold);
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+        .footer-text {
+            color: #aaaaaa;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333333;
+            color: #777777;
+            font-size: 0.85rem;
+        }
+
+        /* === Responsive === */
+        @media (max-width: 900px) {
+            .hero-section::before {
+                width: 100%;
+                height: 50%;
+                top: 0;
+                left: 0;
+                border-radius: 0 0 50% 50%;
+            }
+            .hero-container {
+                flex-direction: column-reverse; /* Teks di atas, Foto di bawah pada HP */
+                text-align: center;
+                gap: 20px;
+            }
+            .hero-image {
+                flex: none;
+                width: 100%;
+            }
+            .hero-content {
+                padding-bottom: 0;
+                padding-top: 20px;
+            }
+            .hero-text-main {
+                font-size: 1.8rem;
+            }
+        }
         @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .nav-links a {
-                margin: 0 10px;
-                font-size: 0.95rem;
-            }
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 40px 20px;
-            }
-            .hero-text span {
-                text-align: center;
-                margin-top: 20px;
+            .nav-links {
+                display: none; 
             }
             .team-grid {
                 grid-template-columns: 1fr;
+            }
+            :root {
+                --padding-section-atas-bawah: 60px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header & Navigation -->
+    <!-- Header (Desain Baru) -->
     <header>
         <div class="nav-container">
-            <a href="#" class="logo-container">
-                <!-- Jika logo belum ada, biarkan error handler menyembunyikannya otomatis -->
-                <img src="assets/logo-kja.png" alt="Logo" onerror="this.style.display='none'"> 
-                KJA Muhammad Irfan
-            </a>
+            <a href="#" class="logo">MI</a>
             <nav class="nav-links">
-                <a href="#tentang-kami">Tentang Kami</a>
-                <a href="#team-kami">Team Kami</a>
-                <a href="#jasa-kami">Jasa Kami</a>
-                <a href="#hubungi-kami">Hubungi Kami</a>
+                <a href="#">Beranda</a>
+                <a href="#tentang-kami">Tentang</a>
+                <a href="#team-kami">Tim</a>
+                <a href="#jasa-kami">Jasa</a>
+                <a href="#hubungi-kami">Hubungin Kami</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero / Quote Section -->
-    <section class="hero">
-        <div class="hero-img">
-            <!-- Path diubah ke assets/Firefly.png sesuai repositori GitHub -->
-            <img src="assets/Firefly.png" alt="Muhammad Irfan">
-        </div>
-        <div class="hero-text">
-            <p>“Saya mendirikan Kantor Jasa Akuntan dengan mission statement: helping businesses build a solid financial foundation so they can focus on what matters most”</p>
-            <span>-Muhammad Irfan</span>
+    <!-- Hero Section (Desain Baru dengan Background Lengkung) -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <!-- Gambar Kiri (Pastikan background gambar transparan / PNG) -->
+            <div class="hero-image">
+                <img src="assets/Firefly.png" alt="Muhammad Irfan">
+            </div>
+            
+            <!-- Teks Kanan dengan Pemisahan Ukuran Font -->
+            <div class="hero-content">
+                <div class="hero-text-intro">
+                    “Saya mendirikan Kantor Jasa Akuntan dengan mission statement:
+                </div>
+                <div class="hero-text-main">
+                    helping businesses build a solid financial foundation so they can focus on what matters most”
+                </div>
+                <div class="hero-text-author">
+                    – Muhammad Irfan
+                </div>
+                <a href="#hubungi-kami" class="btn-primary">Hubungin Kami</a>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="tentang-kami" class="container about">
-        <h2>TENTANG KAMI</h2>
-        <p>KJA Muhammad Irfan adalah kantor penyedia jasa akuntansi yang didirikan dengan kepercayaan bahwa semua jenis bisnis dalam skala apapun berhak memiliki fondasi keuangan yang kuat. Kami memberikan jasa akuntansi dan keuangan yang fleksibel mengikuti kebutuhan bisnis anda.</p>
-        <p><strong>Yang penting masalah anda beres.</strong></p>
+    <section id="tentang-kami" class="about-section container">
+        <div class="about-content">
+            <h2 class="section-title">TENTANG KAMI</h2>
+            <p>KJA Muhammad Irfan adalah kantor penyedia jasa akuntansi yang didirikan dengan kepercayaan bahwa semua jenis bisnis dalam skala apapun berhak memiliki fondasi keuangan yang kuat. Kami memberikan jasa akuntansi dan keuangan yang fleksibel mengikuti kebutuhan bisnis anda.</p>
+            <p><strong>Yang penting masalah anda beres.</strong></p>
+        </div>
     </section>
 
     <!-- Team Section -->
-    <section id="team-kami" class="team">
+    <section id="team-kami" class="team-section">
         <div class="container">
-            <h2>TEAM KAMI</h2>
+            <div class="team-header">
+                <h2 class="section-title">TEAM KAMI</h2>
+            </div>
             <div class="team-grid">
                 <!-- Person 1 -->
                 <div class="team-card">
-                    <div class="team-img-container">
-                        <!-- Menggunakan Firefly.png sementara -->
+                    <div class="team-photo">
                         <img src="assets/Firefly.png" alt="Muhammad Irfan">
                     </div>
                     <div class="team-info">
@@ -326,8 +499,7 @@
                 </div>
                 <!-- Person 2 -->
                 <div class="team-card">
-                    <div class="team-img-container">
-                        <!-- Menggunakan Firefly.png sementara -->
+                    <div class="team-photo">
                         <img src="assets/Firefly.png" alt="Mu'afi Zidni Ngilma">
                     </div>
                     <div class="team-info">
@@ -337,12 +509,11 @@
                 </div>
                 <!-- Person 3 -->
                 <div class="team-card">
-                    <div class="team-img-container">
-                        <!-- Menggunakan Firefly.png sementara -->
-                        <img src="assets/Firefly.png" alt="Rekan Ketiga">
+                    <div class="team-photo">
+                        <img src="assets/Firefly.png" alt="Nama Rekan Ketiga">
                     </div>
                     <div class="team-info">
-                        <h4>Dr. Nama Rekan Ketiga, S.E., M.Ak., BKP</h4>
+                        <h4>Dr. Nama Rekan Ketiga, S.E., M.Ak.</h4>
                         <p>Rekan Pendiri</p>
                     </div>
                 </div>
@@ -351,62 +522,71 @@
     </section>
 
     <!-- Services Section -->
-    <section id="jasa-kami" class="container services">
-        <h2>JASA YANG KAMI TAWARKAN</h2>
+    <section id="jasa-kami" class="services-section container">
+        <div class="services-header">
+            <h2 class="section-title">JASA YANG KAMI TAWARKAN</h2>
+        </div>
         
-        <div class="service-item">
-            <h4>1. Jasa pembukuan hingga akuntansi end-to-end.</h4>
-            <p>Pembukuan yang benar adalah dasar dari segala dasar kompetensi keuangan. Jika bisnis anda hanya mengumpulkan catatan dan dokumen, kami siap membantu membukukan dokumen tersebut menjadi catatan keuangan yang komprehensif dan bisa digunakan untuk pengambilan Keputusan atau pemenuhan data ke pihak eksternal.</p>
-            <p>Kami adalah agen resmi Accurate Online. Jika diperlukan kami siap membantu implementasi pembukuan anda dari penyusunan SOP akuntansi, setup Accurate Online, pencatatan, training karyawan, hingga menjadi laporan keuangan.</p>
-        </div>
+        <div class="services-grid">
+            <!-- Card 1 -->
+            <div class="service-card">
+                <h4>1. Jasa pembukuan hingga akuntansi end-to-end.</h4>
+                <p>Pembukuan yang benar adalah dasar dari segala dasar kompetensi keuangan. Jika bisnis anda hanya mengumpulkan catatan dan dokumen, kami siap membantu membukukan dokumen tersebut menjadi catatan keuangan yang komprehensif dan bisa digunakan untuk pengambilan Keputusan atau pemenuhan data ke pihak eksternal.</p>
+                <p>Kami adalah agen resmi Accurate Online. Jika diperlukan kami siap membantu implementasi pembukuan anda dari penyusunan SOP akuntansi, setup Accurate Online, pencatatan, training karyawan, hingga menjadi laporan keuangan.</p>
+            </div>
 
-        <div class="service-item">
-            <h4>2. Jasa outsourcing CFO (part-time atau fraksional)</h4>
-            <p>Untuk mendapatkan kontribusi profesional keuangan berkaliber Chief Financial Officer (CFO) tidak selalu harus mengeluarkan biaya yang besar. Rekan kami siap memberikan kontribusi sebagai CFO di bisnis anda menyesuaikan dengan skala dan kompleksitas bisnis anda bisa dilakukan secara part-time atau fraksional (hanya dipanggil jika diperlukan).</p>
-        </div>
+            <!-- Card 2 -->
+            <div class="service-card">
+                <h4>2. Jasa outsourcing CFO (part-time atau fraksional)</h4>
+                <p>Untuk mendapatkan kontribusi profesional keuangan berkaliber Chief Financial Officer (CFO) tidak selalu harus mengeluarkan biaya yang besar. Rekan kami siap memberikan kontribusi sebagai CFO di bisnis anda menyesuaikan dengan skala dan kompleksitas bisnis anda bisa dilakukan secara part-time atau fraksional (hanya dipanggil jika diperlukan).</p>
+            </div>
 
-        <div class="service-item">
-            <h4>3. Jasa pendirian team FP&A</h4>
-            <p>Jika bisnis anda berkeinginan untuk memiliki team yang dedicated untuk mengolah, menganalisa, dan menyajikan data keuangan atau lebih sering disebut sebagai team Financial Planning & Analysis (FP&A) namun belum berpengalaman menjalankan FP&A.</p>
-            <p>Team kami siap menjalankan fungsi FP&A di bisnis anda dengan sistem kontrak di awal fase pendiriam team FP&A. Hingga kemudian lanjut rekruitmen, onboarding, dan training karyawan FP&A yang akan full-time di bisnis anda.</p>
+            <!-- Card 3 -->
+            <div class="service-card">
+                <h4>3. Jasa pendirian team FP&A</h4>
+                <p>Jika bisnis anda berkeinginan untuk memiliki team yang dedicated untuk mengolah, menganalisa, dan menyajikan data keuangan atau lebih sering disebut sebagai team Financial Planning & Analysis (FP&A) namun belum berpengalaman menjalankan FP&A.</p>
+                <p>Team kami siap menjalankan fungsi FP&A di bisnis anda dengan sistem kontrak di awal fase pendiriam team FP&A. Hingga kemudian lanjut rekruitmen, onboarding, dan training karyawan FP&A yang akan full-time di bisnis anda.</p>
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="hubungi-kami" class="contact">
-        <div class="container">
-            <h2>HUBUNGI KAMI</h2>
-            <div class="contact-form">
-                <form action="#" method="POST">
-                    <div class="form-group">
-                        <label for="nama">Nama</label>
-                        <input type="text" id="nama" name="nama" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="perusahaan">Perusahaan</label>
-                        <input type="text" id="perusahaan" name="perusahaan" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="nomor">Nomor Mobile |+62|</label>
-                        <input type="tel" id="nomor" name="nomor" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <button type="submit" class="submit-btn">Kirim Pesan</button>
-                </form>
+    <section id="hubungi-kami" class="contact-section">
+        <div class="container contact-wrapper">
+            <div class="contact-header">
+                <h2 class="section-title">HUBUNGI KAMI</h2>
             </div>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" id="nama" name="nama" required>
+                </div>
+                <div class="form-group">
+                    <label for="perusahaan">Perusahaan</label>
+                    <input type="text" id="perusahaan" name="perusahaan" required>
+                </div>
+                <div class="form-group">
+                    <label for="nomor">Nomor Mobile |+62|</label>
+                    <input type="tel" id="nomor" name="nomor" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button type="submit" class="submit-btn">Kirim</button>
+            </form>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-bold">KJA Muhammad Irfan</div>
-            <p>Membantu bisnis membangun fondasi keuangan yang kuat.</p>
-            <p>Email: halo@kjamuhammadirfan.com | Telp: +62 812-XXXX-XXXX</p>
-            <p style="margin-top: 15px; font-size: 0.85rem;">&copy; 2026 KJA Muhammad Irfan. All rights reserved.</p>
+            <div class="footer-logo">KJA Muhammad Irfan</div>
+            <p class="footer-text">Membantu bisnis membangun fondasi keuangan yang kuat.</p>
+            <p class="footer-text">halo@kjamuhammadirfan.com</p>
+            <div class="footer-bottom">
+                &copy; 2026 KJA Muhammad Irfan. Hak Cipta Dilindungi.
+            </div>
         </div>
     </footer>
 
