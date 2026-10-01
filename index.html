@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <!-- Header -->
     <header>
         <div class="nav-container">
@@ -35,7 +34,6 @@
         <div class="hero-image-wrapper">
             <img src="assets/Firefly.png" alt="Muhammad Irfan">
         </div>
-
         <div class="hero-container">
             <!-- Konten Teks di Kanan -->
             <div class="hero-content">
@@ -83,44 +81,48 @@
         </div>
     </section>
 
-    <!-- Partner Teknologi Section -->
+    <!-- Partner Teknologi Section (UPDATED) -->
     <section id="partner-teknologi" class="partner-section container">
         <div class="partner-header">
             <h2 class="section-title">PARTNER TEKNOLOGI KAMI</h2>
         </div>
-        <div class="partner-logos">
-            <img src="assets/accurate.svg" alt="Accurate Online">
-            <img src="assets/erpnext.svg" alt="ERPNext">
+        <div class="partner-logos-wrapper">
+            <div class="partner-logo-item">
+                <img src="assets/accurate.svg" alt="Accurate Online" class="logo-accurate">
+            </div>
+            <div class="partner-logo-item">
+                <img src="assets/erpnext.svg" alt="ERPNext" class="logo-erpnext">
+            </div>
         </div>
         <p class="partner-text">Temukan teknologi yang sesuai dengan kebutuhan bisnis anda</p>
     </section>
 
     <!-- Services Section -->
-    <section id="jasa-kami" class="services-section container">
-        <div class="services-header">
-            <h2 class="section-title">JASA YANG KAMI TAWARKAN</h2>
-        </div>
-        
-        <div class="services-grid">
-            <!-- Card 1 -->
-            <div class="service-card">
-                <h4>Pembukuan & Akuntansi End-to-End</h4>
-                <p>Pembukuan yang benar adalah dasar dari segala kompetensi keuangan. Jika bisnis Anda hanya mengumpulkan dokumen, kami membukukannya menjadi <strong>catatan keuangan komprehensif</strong> untuk pengambilan keputusan dan pihak eksternal.</p>
-                <p>Sebagai agen resmi Accurate Online, kami membantu implementasi menyeluruh: mulai dari penyusunan <strong>SOP akuntansi, setup sistem, pencatatan rutin, training karyawan, hingga pelaporan keuangan</strong>.</p>
+    <section id="jasa-kami" class="services-section">
+        <div class="container">
+            <div class="services-header">
+                <h2 class="section-title">JASA YANG KAMI TAWARKAN</h2>
             </div>
-
-            <!-- Card 2 -->
-            <div class="service-card">
-                <h4>Outsourcing CFO (Fractional / Part-time)</h4>
-                <p>Mendapatkan kontribusi profesional keuangan berkaliber <strong>Chief Financial Officer (CFO)</strong> tidak harus berbiaya besar.</p>
-                <p>Rekan kami siap memberikan arahan strategis sebagai CFO yang menyesuaikan dengan skala bisnis Anda. Jasa ini dapat dilakukan secara <strong>part-time atau fraksional</strong> (dipanggil sesuai kebutuhan).</p>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="service-card">
-                <h4>Pendirian Team FP&A</h4>
-                <p>Ditujukan bagi bisnis yang ingin memiliki tim terdedikasi untuk mengolah dan menganalisa data keuangan—<strong>Financial Planning & Analysis (FP&A)</strong>—namun belum berpengalaman menjalankannya.</p>
-                <p>Tim kami akan menjalankan fungsi FP&A di fase awal pendirian. Selanjutnya, kami mendampingi proses <strong>rekrutmen, onboarding, dan training karyawan internal</strong> yang akan mengelola FP&A secara full-time.</p>
+            
+            <div class="services-grid">
+                <!-- Card 1 -->
+                <div class="service-card">
+                    <h4>Pembukuan & Akuntansi End-to-End</h4>
+                    <p>Pembukuan yang benar adalah dasar dari segala kompetensi keuangan. Jika bisnis Anda hanya mengumpulkan dokumen, kami membukukannya menjadi <strong>catatan keuangan komprehensif</strong> untuk pengambilan keputusan dan pihak eksternal.</p>
+                    <p>Sebagai agen resmi Accurate Online, kami membantu implementasi menyeluruh: mulai dari penyusunan <strong>SOP akuntansi, setup sistem, pencatatan rutin, training karyawan, hingga pelaporan keuangan</strong>.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="service-card">
+                    <h4>Outsourcing CFO (Fractional / Part-time)</h4>
+                    <p>Mendapatkan kontribusi profesional keuangan berkaliber <strong>Chief Financial Officer (CFO)</strong> tidak harus berbiaya besar.</p>
+                    <p>Rekan kami siap memberikan arahan strategis sebagai CFO yang menyesuaikan dengan skala bisnis Anda. Jasa ini dapat dilakukan secara <strong>part-time atau fraksional</strong> (dipanggil sesuai kebutuhan).</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="service-card">
+                    <h4>Pendirian Team FP&A</h4>
+                    <p>Ditujukan bagi bisnis yang ingin memiliki tim terdedikasi untuk mengolah dan menganalisa data keuangan—<strong>Financial Planning & Analysis (FP&A)</strong>—namun belum berpengalaman menjalankannya.</p>
+                    <p>Tim kami akan menjalankan fungsi FP&A di fase awal pendirian. Selanjutnya, kami mendampingi proses <strong>rekrutmen, onboarding, dan training karyawan internal</strong> yang akan mengelola FP&A secara full-time.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -168,12 +170,8 @@
     <!-- Script Automasi Form (WA & Database) -->
     <script>
         document.getElementById("contactForm").addEventListener("submit", function(e) {
-            e.preventDefault(); // Mencegah form memuat ulang halaman
-
-            // 1. Kumpulkan Data Form
+            e.preventDefault(); 
             const formData = new FormData(this);
-
-            // 2. Tembak data ke database PHP secara background (AJAX)
             fetch('simpan.php', {
                 method: 'POST',
                 body: formData
@@ -182,12 +180,8 @@
             }).catch(error => {
                 console.error('Gagal menyimpan:', error);
             });
-
-            // 3. Langsung arahkan ke Link WA Pak Irfan
             const waLink = "https://wa.me/message/6OGV4O5KGPEQL1";
             window.open(waLink, '_blank');
-
-            // 4. Bersihkan form setelah diklik
             this.reset();
         });
     </script>
