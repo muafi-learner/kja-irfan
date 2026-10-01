@@ -30,7 +30,7 @@
     --jarak-antar-kartu: 30px;
 
     /* 5. HERO SECTION */
-    --hero-min-height: 65vh;           
+    --hero-min-height: 65vh;            
     --hero-image-wrapper-height: 100%; 
     --hero-text-padding-left: 80px;    
     --hero-text-width: 45%;            
@@ -93,23 +93,22 @@ header {
     color: var(--warna-teks-pudar);
 }
 
-/* === Hero Section === */
+/* === Hero Section (Desktop View) === */
 .hero-section {
     background-color: var(--bg-putih);
     position: relative;
-    padding-top: 40px;
+    margin-top: 100px; 
     padding-bottom: 0; 
-    margin-top: -1px; 
     display: flex; 
     align-items: center;
-    min-height: var(--hero-min-height); 
+    min-height: calc(var(--hero-min-height) - 60px); 
     width: 100%;
     box-sizing: border-box;
 }
 
 .hero-image-wrapper {
     position: absolute; 
-    top: 0;
+    top: 0; 
     left: 0; 
     width: 45vw; 
     height: var(--hero-image-wrapper-height); 
@@ -123,14 +122,11 @@ header {
 }
 .hero-image-wrapper img {
     width: 100%; 
-    max-width: 400px; /* Diperkecil agar tidak terlalu zoom */
-    height: 90%; /* Menggunakan persentase tinggi agar tidak mentok ke atas */
+    max-width: 400px; 
+    height: 90%; 
     display: block;
-    
-    /* GANTI INI: menggunakan contain agar gambar utuh tidak terpotong/zoom */
     object-fit: contain; 
-    
-    object-position: bottom center; /* Memastikan foto tetap menempel ke bawah */
+    object-position: bottom center; 
     margin-right: 5%; 
 }
 
@@ -149,7 +145,7 @@ header {
 
 .hero-content {
     width: var(--hero-text-width); 
-    padding-top: 40px; 
+    padding-top: 0; 
     padding-bottom: 40px; 
     padding-left: var(--hero-text-padding-left); 
     pointer-events: auto; 
@@ -196,7 +192,7 @@ header {
 .about-section {
     background-color: var(--bg-putih);
     text-align: center;
-    margin-top: 40px;
+    margin-top: 60px;
 }
 .about-content {
     max-width: 800px;
@@ -214,7 +210,7 @@ header {
     margin-bottom: 15px;
 }
 
-/* === Team Section === */
+/* === Team Section (Updated untuk 1 Card di Tengah) === */
 .team-section {
     background-color: var(--bg-abu-terang);
     padding-bottom: 80px; 
@@ -224,8 +220,8 @@ header {
     margin-bottom: 50px;
 }
 .team-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    justify-content: center; /* Membuat 1 card otomatis ke tengah */
     gap: var(--jarak-antar-kartu);
 }
 .team-card {
@@ -235,6 +231,10 @@ header {
     overflow: hidden;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
+    
+    /* Membatasi lebar agar card tidak melar */
+    width: 100%;
+    max-width: 320px; 
 }
 .team-card:hover {
     transform: translateY(-5px);
@@ -276,7 +276,35 @@ header {
     margin: 0;
 }
 
-/* === Services Section (Desain Solid & Professional) === */
+/* === Partner Teknologi Section (Updated) === */
+.partner-section {
+    background-color: var(--bg-putih);
+    text-align: center;
+    padding-bottom: 40px; 
+}
+.partner-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.partner-logos {
+    display: flex;
+    justify-content: center; /* Rata tengah horizontal */
+    align-items: center;     /* Rata tengah vertikal */
+    gap: 80px;               /* Jarak antar logo di desktop */
+    margin-bottom: 30px;
+}
+.partner-logos img {
+    height: 70px; 
+    width: auto;
+    object-fit: contain;
+}
+.partner-text {
+    font-size: 0.95rem;
+    color: var(--warna-teks-pudar);
+    margin: 0;
+}
+
+/* === Services Section === */
 .services-section {
     background-color: var(--bg-putih);
     padding-bottom: var(--padding-section-atas-bawah);
@@ -439,6 +467,7 @@ footer {
         flex-direction: column;
         min-height: auto;
         padding-top: 0; 
+        margin-top: 0; 
         width: 100%; 
         box-sizing: border-box;
     }
@@ -483,12 +512,16 @@ footer {
     .nav-links {
         display: none; 
     }
-    .team-grid {
-        grid-template-columns: 1fr;
-        max-width: 320px; 
-        margin: 0 auto; 
-    }
     .section-title {
         font-size: 1.6rem; 
+    }
+    
+    /* Responsive untuk Logo Partner di Mobile (Menumpuk) */
+    .partner-logos {
+        flex-direction: column; 
+        gap: 40px;
+    }
+    .partner-logos img {
+        height: 50px;
     }
 }
