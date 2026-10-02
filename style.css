@@ -1,9 +1,7 @@
 /* ==========================================================
    PENGATURAN UTAMA (CSS Variables)
-   Ubah nilai di sini untuk mengubah desain secara global
    ========================================================== */
 :root {
-    /* 1. WARNA (Monokrom) */
     --warna-teks-utama: #333333;
     --warna-teks-pudar: #666666;
     --warna-judul: #111111;
@@ -12,24 +10,20 @@
     --bg-abu-terang: #f0f2f5; 
     --garis-batas: #e5e7eb;
 
-    /* 2. UKURAN FONT */
     --font-size-paragraf: 1.05rem;
     --font-size-judul-section: 2rem;
     --font-size-nama-tim: 1.1rem;
     --font-size-judul-jasa: 1.2rem;
 
-    /* 3. KETEBALAN FONT */
     --fw-normal: 400;
     --fw-medium: 500;
     --fw-semibold: 600;
     --fw-bold: 700;
 
-    /* 4. PADDING & JARAK */
     --padding-section-atas-bawah: 80px;
     --padding-section-kiri-kanan: 20px;
     --jarak-antar-kartu: 30px;
 
-    /* 5. HERO SECTION */
     --hero-min-height: 65vh;            
     --hero-image-wrapper-height: 100%; 
     --hero-text-padding-left: 80px;    
@@ -61,8 +55,8 @@ h1, h2, h3, h4 {
 /* === Navbar / Header === */
 header {
     background-color: var(--bg-putih);
-    position: fixed; /* Berubah dari sticky menjadi fixed */
-    width: 100%;     /* Wajib ditambahkan agar navbar merentang penuh */
+    position: fixed; 
+    width: 100%;     
     top: 0;
     left: 0;
     z-index: 1000;
@@ -95,7 +89,7 @@ header {
     color: var(--warna-teks-pudar);
 }
 
-/* === Hero Section (Desktop View) === */
+/* === Hero Section === */
 .hero-section {
     background-color: var(--bg-putih);
     position: relative;
@@ -207,7 +201,7 @@ header {
     margin-bottom: 15px;
 }
 
-/* === Team Section (Updated 1 Card Paksa Tengah) === */
+/* === Team Section === */
 .team-section {
     background-color: var(--bg-abu-terang);
     padding-bottom: 80px; 
@@ -274,7 +268,7 @@ header {
     margin: 0;
 }
 
-/* === Partner Teknologi Section (PROFESIONAL) === */
+/* === Partner Teknologi Section === */
 .partner-section {
     background-color: var(--bg-putih);
     text-align: center;
@@ -284,46 +278,40 @@ header {
     text-align: center;
     margin-bottom: 50px;
 }
-/* Membungkus logo dengan display Grid/Flex yang kaku agar rata tengah sempurna */
 .partner-logos-wrapper {
     display: flex;
     flex-direction: row; 
     justify-content: center; 
     align-items: center;     
-    gap: 120px; /* Jarak proporsional antar logo */               
+    gap: 70px; 
     margin-bottom: 40px;
     width: 100%;
-    max-width: 800px; /* Membatasi sebaran logo agar tidak terlalu ke pinggir */
+    max-width: 900px;
     margin: 0 auto 40px auto;
 }
 .partner-logo-item {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px; /* Area "bounding box" agar kedua logo punya tinggi poros yang sama */
+    height: 90px; 
 }
-/* Base setting untuk semua logo partner dengan efek grayscale mewah */
 .partner-logo-item img {
     width: auto;
+    max-width: 100%; /* Pengaman ekstra agar SVG tidak melar */
     object-fit: contain;
     display: block;
-    filter: grayscale(100%) opacity(70%); /* Jadi abu-abu elegan */
+    filter: grayscale(100%) opacity(70%); 
     transition: all 0.3s ease-in-out;
 }
-/* Saat di-hover, warna asli muncul */
 .partner-logo-item img:hover {
     filter: grayscale(0%) opacity(100%);
     transform: scale(1.05);
 }
 
-/* 1. Atur Ukuran Spesifik Logo Accurate */
-.logo-accurate {
-    height: 80px; /* Tinggi disesuaikan dengan proporsi awan-nya */
-}
-/* 2. Atur Ukuran Spesifik Logo ERPNext */
-.logo-erpnext {
-    height: 50px; /* ERPNext lebih pendek memanjang, jadi height lebih kecil */
-}
+/* Ukuran Proporsional Desktop */
+.logo-accurate { height: 70px; }
+.logo-odoo { height: 55px; }
+.logo-erpnext { height: 40px; }
 
 .partner-text {
     font-size: 0.95rem;
@@ -331,7 +319,6 @@ header {
     margin: 0;
 }
 
-/* === Services Section (Background Abu-abu) === */
 /* === Services Section === */
 .services-section {
     background-color: var(--bg-abu-terang);
@@ -398,10 +385,9 @@ header {
     font-weight: var(--fw-semibold);
 }
 
-/* === Contact Section (Menyatu dgn Services) === */
+/* === Contact Section === */
 .contact-section {
     background-color: var(--bg-abu-terang);
-    /* border-top dihapus agar nyambung */
     padding-bottom: 80px;
 }
 .contact-wrapper {
@@ -544,18 +530,16 @@ footer {
         font-size: 1.6rem; 
     }
     
-    /* Responsive Logo Partner di Mobile */
     .partner-logos-wrapper {
         flex-direction: column; 
-        gap: 20px;
+        gap: 30px; 
     }
     .partner-logo-item {
-        height: auto; /* Bebaskan poros di mobile */
+        height: auto; 
     }
-    .logo-accurate {
-        height: 60px; 
-    }
-    .logo-erpnext {
-        height: 40px; 
-    }
+    
+    /* Ukuran Proporsional Mobile */
+    .logo-accurate { height: 55px; }
+    .logo-odoo { height: 45px; }
+    .logo-erpnext { height: 30px; }
 }
